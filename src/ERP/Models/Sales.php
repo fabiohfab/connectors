@@ -24,108 +24,13 @@ class Sales
 
     public function __construct(array $sales = null)
     {
-        $this->project = $sales["project"];
-        $this->documentId = $sales["documentId"];
-        $this->document = $sales["document"];
-        $this->documentFiscalSpace = $sales["documentFiscalSpace"];
-        $this->client = $sales["client"];
-        $this->clientName = $sales["clientName"];
-        $this->documentDate = $sales["documentDate"];
-        $this->documentDueDate = $sales["documentDueDate"];
-        $this->rowId = $sales["rowId"];
-        $this->rowNumber = $sales["rowNumber"];
-        $this->rowWeMoldId = $sales["rowWeMoldId"];
-        $this->rowDescription = $sales["rowDescription"];
-        $this->rowArticle = $sales["rowArticle"];
-        $this->rowArticleDescription = $sales["rowArticleDescription"];
-        $this->rowQuantity = $sales["rowQuantity"];
-        $this->rowUnitPrice = $sales["rowUnitPrice"];
-        $this->rowNetPrice = $sales["rowNetPrice"];
+        foreach ($sales as $key => $value) {
+            $this->$key = $value;
+        }
     }
-
-    public function project()
+    public function get($name)
     {
-        return $this->project;
-    }
-
-    public function documentId()
-    {
-        return $this->documentId;
-    }
-
-    public function document()
-    {
-        return $this->document;
-    }
-
-    public function documentFiscalSpace()
-    {
-        return $this->documentFiscalSpace;
-    }
-
-    public function client()
-    {
-        return $this->client;
-    }
-
-    public function clientName()
-    {
-        return $this->clientName;
-    }
-
-    public function documentDate()
-    {
-        return $this->documentDate;
-    }
-
-    public function documentDueDate()
-    {
-        return $this->documentDueDate;
-    }
-
-    public function rowId()
-    {
-        return $this->rowId;
-    }
-
-    public function rowNumber()
-    {
-        return $this->rowNumber;
-    }
-
-    public function rowWeMoldId()
-    {
-        return $this->rowWeMoldId;
-    }
-
-    public function rowDescription()
-    {
-        return $this->rowDescription;
-    }
-
-    public function rowArticle()
-    {
-        return $this->rowArticle;
-    }
-
-    public function rowArticleDescription()
-    {
-        return $this->rowArticleDescription;
-    }
-
-    public function rowQuantity()
-    {
-        return $this->rowQuantity;
-    }
-
-    public function rowUnitPrice()
-    {
-        return $this->rowUnitPrice;
-    }
-
-    public function rowNetPrice()
-    {
-        return $this->rowNetPrice;
+        return $this->$name;
     }
 
     public function toArray()
@@ -149,10 +54,5 @@ class Sales
             "rowUnitPrice" => $this->rowUnitPrice(),
             "rowNetPrice" => $this->rowNetPrice(),
         ];
-    }
-
-    public function __toString()
-    {
-        return $this->rowId();
     }
 }

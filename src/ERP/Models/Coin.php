@@ -7,10 +7,15 @@ class Coin
     protected $id;
     protected $description;
 
-    public function __construct(array $client = null)
+    public function __construct(array $coin = null)
     {
-        $this->id = $client["id"];
-        $this->description = $client["description"];
+        foreach ($coin as $key => $value) {
+            $this->$key = $value;
+        }
+    }
+    public function get($name)
+    {
+        return $this->$name;
     }
 
     public function id()
